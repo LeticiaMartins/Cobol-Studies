@@ -1,7 +1,7 @@
       ******************************************************************
-      * Author:
-      * Date:
-      * Purpose:
+      * Author: LETICIA MARTINS BANDEIRA PASCALE
+      * Date: 19/06/2024
+      * Purpose: STUDY
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
