@@ -3,6 +3,7 @@
       * Date: 27/06/2024
       * Purpose: LISTAR CONTATOS
       * Tectonics: cobc
+      * Update: 01/07/2024 - TRANSFORMADO DE PROGRAMA PARA MODULO
       ******************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID. LISCNTT.
@@ -39,10 +40,16 @@
        77 WS-EXIT                         PIC X.
           88 EXIT-OK                      VALUE 'F' FALSE 'N'.
        77 WS-CONT                         PIC 9(003) VALUE ZEROS.
-       PROCEDURE DIVISION.
+
+       LINKAGE SECTION.
+       01 LK-COM-AREA.
+          03 LK-MENSAGEM                  PIC X(40).
+
+
+       PROCEDURE DIVISION USING LK-COM-AREA.
        MAIN-PROCEDURE.
 
-           DISPLAY '*** LISTAGEM DE CONTATOS ***'
+           DISPLAY LK-MENSAGEM
            SET EXIT-OK             TO FALSE
            PERFORM P300-LISTAR   THRU  P300-FIM
            PERFORM P900-FIM
@@ -84,5 +91,5 @@
        P300-FIM.
 
        P900-FIM.
-            STOP RUN.
+            GOBACK.
        END PROGRAM LISCNTT.

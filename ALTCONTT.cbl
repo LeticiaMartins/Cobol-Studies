@@ -3,6 +3,7 @@
       * Date: 28/06/2024
       * Purpose: ALTERAR CONTATOS
       * Tectonics: cobc
+      * Update: 01/07/2024 - TRANSFORMADO DE PROGRAMA PARA MODULO
       ******************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID. ALTCONTT.
@@ -39,10 +40,16 @@
        77 WS-EXIT                         PIC X.
           88 EXIT-OK                      VALUE 'F' FALSE 'N'.
        77 WS-CONFIRM                      PIC X VALUE SPACES.
-       PROCEDURE DIVISION.
+
+       LINKAGE SECTION.
+       01 LK-COM-AREA.
+          03 LK-MENSAGEM                  PIC X(40).
+
+
+       PROCEDURE DIVISION USING LK-COM-AREA.
        MAIN-PROCEDURE.
 
-           DISPLAY '*** ALTERAR CONTATOS ***'
+           DISPLAY LK-MENSAGEM
            SET EXIT-OK             TO FALSE
            PERFORM P300-ALTERAR   THRU  P300-FIM UNTIL EXIT-OK
            PERFORM P900-FIM
@@ -94,5 +101,5 @@
        P300-FIM.
 
        P900-FIM.
-            STOP RUN.
+            GOBACK.
        END PROGRAM ALTCONTT.
